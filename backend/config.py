@@ -8,11 +8,11 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 480
     OPENAI_API_KEY: str = ""
-    CORS_ORIGINS: List[str] = [
-        "http://localhost:5173",
-        "http://localhost:5174",
-        "http://127.0.0.1:5173",
-    ]
+    CORS_ORIGINS_STR: str = "http://localhost:5173,http://localhost:5174,http://127.0.0.1:5173"
+
+    @property
+    def CORS_ORIGINS(self) -> List[str]:
+        return [o.strip() for o in self.CORS_ORIGINS_STR.split(",") if o.strip()]
 
     class Config:
         env_file = ".env"
