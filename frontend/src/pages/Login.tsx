@@ -3,9 +3,23 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../store/AuthContext';
 import { Shield } from 'lucide-react';
 
+const ROLE_LANDING: Record<string, string> = {
+  admin: '/',
+  broker: '/clients',
+  analyst: '/analytics',
+  client: '/policies',
+};
+
+const demoAccounts = [
+  { label: 'Admin', email: 'admin@lockton.com', password: 'Lockton@Admin2024' },
+  { label: 'Broker', email: 'broker@lockton.com', password: 'Lockton@Broker2024' },
+  { label: 'Client', email: 'client@lockton.com', password: 'Lockton@Client2024' },
+  { label: 'Analyst', email: 'analyst@lockton.com', password: 'Lockton@Analyst2024' },
+];
+
 export default function Login() {
-  const [email, setEmail] = useState('admin@lockton.com');
-  const [password, setPassword] = useState('admin123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
@@ -16,21 +30,14 @@ export default function Login() {
     setError('');
     setLoading(true);
     try {
-      await login(email, password);
-      navigate('/');
+      const user = await login(email, password);
+      navigate(ROLE_LANDING[user.role] ?? '/');
     } catch {
       setError('Invalid email or password');
     } finally {
       setLoading(false);
     }
   };
-
-  const demoAccounts = [
-    { label: 'Admin', email: 'admin@lockton.com', password: 'admin123' },
-    { label: 'Broker', email: 'broker@lockton.com', password: 'broker123' },
-    { label: 'Client', email: 'client@lockton.com', password: 'client123' },
-    { label: 'Analyst', email: 'analyst@lockton.com', password: 'analyst123' },
-  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-lockton-navy-dark via-lockton-navy to-lockton-navy-light flex items-center justify-center p-4">

@@ -6,7 +6,7 @@ interface AuthState {
   user: User | null;
   token: string | null;
   loading: boolean;
-  login: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<User>;
   logout: () => void;
 }
 
@@ -14,7 +14,7 @@ const AuthContext = createContext<AuthState>({
   user: null,
   token: null,
   loading: true,
-  login: async () => {},
+  login: async () => { throw new Error('Not initialized'); },
   logout: () => {},
 });
 
@@ -34,10 +34,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, [token]);
 
-  const login = async (email: string, password: string) => {
+  const login = async (email: string, password: string): Promise<User> => {
     const res = await authApi.login(email, password);
     localStorage.setItem('token', res.access_token);
+    const me = await authApi.me();
     setToken(res.access_token);
+    setUser(me);
+    return me;
   };
 
   const logout = () => {
