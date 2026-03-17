@@ -12,12 +12,12 @@ def seed_database(db: Session):
 
     # ── Users ──
     users = [
-        User(email="admin@lockton.com", hashed_password=get_password_hash("admin123"), full_name="Sarah Mitchell", role="admin", phone="(555) 100-0001", department="Administration"),
-        User(email="broker@lockton.com", hashed_password=get_password_hash("broker123"), full_name="James Rodriguez", role="broker", phone="(555) 200-0002", department="Commercial Lines"),
-        User(email="broker2@lockton.com", hashed_password=get_password_hash("broker123"), full_name="Emily Chen", role="broker", phone="(555) 200-0003", department="Personal Lines"),
-        User(email="broker3@lockton.com", hashed_password=get_password_hash("broker123"), full_name="Michael Thompson", role="broker", phone="(555) 200-0004", department="Specialty"),
-        User(email="client@lockton.com", hashed_password=get_password_hash("client123"), full_name="Robert Johnson", role="client", phone="(555) 300-0005", department=""),
-        User(email="analyst@lockton.com", hashed_password=get_password_hash("analyst123"), full_name="Lisa Park", role="analyst", phone="(555) 400-0006", department="Analytics"),
+        User(email="admin@lockton.com", hashed_password=get_password_hash("Lockton@Admin2024"), full_name="Sarah Mitchell", role="admin", phone="(555) 100-0001", department="Administration"),
+        User(email="broker@lockton.com", hashed_password=get_password_hash("Lockton@Broker2024"), full_name="James Rodriguez", role="broker", phone="(555) 200-0002", department="Commercial Lines"),
+        User(email="broker2@lockton.com", hashed_password=get_password_hash("Lockton@Broker2024"), full_name="Emily Chen", role="broker", phone="(555) 200-0003", department="Personal Lines"),
+        User(email="broker3@lockton.com", hashed_password=get_password_hash("Lockton@Broker2024"), full_name="Michael Thompson", role="broker", phone="(555) 200-0004", department="Specialty"),
+        User(email="client@lockton.com", hashed_password=get_password_hash("Lockton@Client2024"), full_name="Robert Johnson", role="client", phone="(555) 300-0005", department=""),
+        User(email="analyst@lockton.com", hashed_password=get_password_hash("Lockton@Analyst2024"), full_name="Lisa Park", role="analyst", phone="(555) 400-0006", department="Analytics"),
     ]
     db.add_all(users)
     db.flush()
