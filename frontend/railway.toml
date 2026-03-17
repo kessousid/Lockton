@@ -3,6 +3,5 @@ builder = "nixpacks"
 buildCommand = "npm run build"
 
 [deploy]
-startCommand = "npx serve dist -p $PORT -s"
 healthcheckPath = "/"
 healthcheckTimeout = 30
