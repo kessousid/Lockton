@@ -18,7 +18,7 @@ def seed_database(db: Session):
             User(email="analyst@demo.com", hashed_password=get_password_hash("Platform@Analyst2024"), full_name="Lisa Park", role="analyst", phone="(555) 400-0006", department="Analytics"),
         ]
         db.add_all(users)
-        db.flush()
+        db.commit()
 
     if db.query(Carrier).count() > 0:
         return
