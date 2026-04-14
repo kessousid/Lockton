@@ -11,10 +11,10 @@ const ROLE_LANDING: Record<string, string> = {
 };
 
 const demoAccounts = [
-  { label: 'Admin', email: 'admin@lockton.com', password: 'Lockton@Admin2024' },
-  { label: 'Broker', email: 'broker@lockton.com', password: 'Lockton@Broker2024' },
-  { label: 'Client', email: 'client@lockton.com', password: 'Lockton@Client2024' },
-  { label: 'Analyst', email: 'analyst@lockton.com', password: 'Lockton@Analyst2024' },
+  { label: 'Admin', email: 'admin@demo.com', password: 'Platform@Admin2024' },
+  { label: 'Broker', email: 'broker@demo.com', password: 'Platform@Broker2024' },
+  { label: 'Client', email: 'client@demo.com', password: 'Platform@Client2024' },
+  { label: 'Analyst', email: 'analyst@demo.com', password: 'Platform@Analyst2024' },
 ];
 
 export default function Login() {
@@ -47,8 +47,8 @@ export default function Login() {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-lockton-gold rounded-2xl mb-4">
             <Shield className="w-8 h-8 text-lockton-navy-dark" />
           </div>
-          <h1 className="text-3xl font-bold text-white">LOCKTON</h1>
-          <p className="text-gray-300 mt-1">Insurance Management Platform</p>
+          <h1 className="text-3xl font-bold text-white">INSURANCE PLATFORM</h1>
+          <p className="text-gray-300 mt-1">Insurance Management</p>
         </div>
 
         {/* Form */}

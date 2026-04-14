@@ -23,7 +23,7 @@ def chat_with_assistant(message: str, context: str = "") -> str:
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": f"You are an insurance assistant for Lockton. Help with insurance questions, policy analysis, and risk assessment. Context: {context}"},
+                {"role": "system", "content": f"You are an insurance assistant. Help with insurance questions, policy analysis, and risk assessment. Context: {context}"},
                 {"role": "user", "content": message},
             ],
             max_tokens=1000,
@@ -85,7 +85,7 @@ def _fallback_response(message: str) -> str:
         return "Check the Renewals section for upcoming renewals. You can view the renewal pipeline, set reminders, and track renewal status."
     if "risk" in msg:
         return "Risk assessments are available on client detail pages. Our AI model considers industry, claims history, policy coverage, and market factors."
-    return "I'm your Lockton insurance assistant. I can help with policy questions, claims guidance, renewal tracking, and risk assessments. Try asking about a specific topic!"
+    return "I'm your insurance assistant. I can help with policy questions, claims guidance, renewal tracking, and risk assessments. Try asking about a specific topic!"
 
 
 def _fallback_risk_prediction(client_data: dict) -> dict:

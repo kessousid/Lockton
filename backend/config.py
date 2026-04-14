@@ -2,7 +2,7 @@ from pydantic_settings import BaseSettings
 from typing import List
 
 class Settings(BaseSettings):
-    APP_NAME: str = "Lockton Insurance Platform"
+    APP_NAME: str = "Insurance Platform"
     DATABASE_URL: str = "sqlite:///./lockton.db"
     SECRET_KEY: str = "lockton-secret-key-change-in-production-2024"
     ALGORITHM: str = "HS256"

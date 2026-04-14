@@ -21,7 +21,7 @@ const SUGGESTIONS = [
 
 export default function AIAssistant() {
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: "Hello! I'm your Lockton AI Insurance Assistant. I can help with policy questions, claims guidance, renewal tracking, risk assessments, and more. How can I help you today?", timestamp: new Date() },
+    { role: 'assistant', content: "Hello! I'm your AI Insurance Assistant. I can help with policy questions, claims guidance, renewal tracking, risk assessments, and more. How can I help you today?", timestamp: new Date() },
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);

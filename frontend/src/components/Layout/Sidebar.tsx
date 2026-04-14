@@ -40,7 +40,7 @@ export default function Sidebar() {
         <div className="w-8 h-8 bg-lockton-gold rounded-lg flex items-center justify-center flex-shrink-0">
           <Shield className="w-5 h-5 text-lockton-navy-dark" />
         </div>
-        {!collapsed && <span className="font-bold text-lg tracking-wide">LOCKTON</span>}
+        {!collapsed && <span className="font-bold text-lg tracking-wide">INSURANCE PLATFORM</span>}
       </div>
 
       {/* Nav */}
