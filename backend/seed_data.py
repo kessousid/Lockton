@@ -7,20 +7,21 @@ import json
 
 
 def seed_database(db: Session):
-    if db.query(User).count() > 0:
-        return
+    # ── Users ── (always seed if missing, independent of other tables)
+    if db.query(User).count() == 0:
+        users = [
+            User(email="admin@demo.com", hashed_password=get_password_hash("Platform@Admin2024"), full_name="Sarah Mitchell", role="admin", phone="(555) 100-0001", department="Administration"),
+            User(email="broker@demo.com", hashed_password=get_password_hash("Platform@Broker2024"), full_name="James Rodriguez", role="broker", phone="(555) 200-0002", department="Commercial Lines"),
+            User(email="broker2@demo.com", hashed_password=get_password_hash("Platform@Broker2024"), full_name="Emily Chen", role="broker", phone="(555) 200-0003", department="Personal Lines"),
+            User(email="broker3@demo.com", hashed_password=get_password_hash("Platform@Broker2024"), full_name="Michael Thompson", role="broker", phone="(555) 200-0004", department="Specialty"),
+            User(email="client@demo.com", hashed_password=get_password_hash("Platform@Client2024"), full_name="Robert Johnson", role="client", phone="(555) 300-0005", department=""),
+            User(email="analyst@demo.com", hashed_password=get_password_hash("Platform@Analyst2024"), full_name="Lisa Park", role="analyst", phone="(555) 400-0006", department="Analytics"),
+        ]
+        db.add_all(users)
+        db.flush()
 
-    # ── Users ──
-    users = [
-        User(email="admin@demo.com", hashed_password=get_password_hash("Platform@Admin2024"), full_name="Sarah Mitchell", role="admin", phone="(555) 100-0001", department="Administration"),
-        User(email="broker@demo.com", hashed_password=get_password_hash("Platform@Broker2024"), full_name="James Rodriguez", role="broker", phone="(555) 200-0002", department="Commercial Lines"),
-        User(email="broker2@demo.com", hashed_password=get_password_hash("Platform@Broker2024"), full_name="Emily Chen", role="broker", phone="(555) 200-0003", department="Personal Lines"),
-        User(email="broker3@demo.com", hashed_password=get_password_hash("Platform@Broker2024"), full_name="Michael Thompson", role="broker", phone="(555) 200-0004", department="Specialty"),
-        User(email="client@demo.com", hashed_password=get_password_hash("Platform@Client2024"), full_name="Robert Johnson", role="client", phone="(555) 300-0005", department=""),
-        User(email="analyst@demo.com", hashed_password=get_password_hash("Platform@Analyst2024"), full_name="Lisa Park", role="analyst", phone="(555) 400-0006", department="Analytics"),
-    ]
-    db.add_all(users)
-    db.flush()
+    if db.query(Carrier).count() > 0:
+        return
 
     # ── Carriers ──
     carriers = [
